@@ -12,6 +12,6 @@ namespace Bean.Data.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public CustomerAdress PrimaryAddress { get; set; }
+        public CustomerAddress PrimaryAddress { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bean.Data.Models
 {
-    public class CustomerAdress
+    public class CustomerAddress
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }

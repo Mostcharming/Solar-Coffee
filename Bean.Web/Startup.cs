@@ -29,9 +29,13 @@ namespace Bean.Web
         {
             services.AddControllers();
 
-            services.AddDbContext<SolarDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-
-
+            services.AddDbContext<SolarDbContext>(options =>
+            {
+                options.EnableDetailedErrors();
+                options.UseSqlServer(Configuration.GetConnectionString("solar.db"));
+            });
+                
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
