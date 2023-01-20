@@ -1,6 +1,8 @@
 ﻿using Bean.Services.Product;
+using Bean.Web.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace Bean.Web.Controllers
 {
@@ -20,7 +22,11 @@ namespace Bean.Web.Controllers
         {
             _logger.LogInformation("Getting all products");
             var products = _productService.GetAllProducts();
-            return Ok(products);
+
+            var productViewModels = products
+                .Select(ProductMapper.SerializeProductModel);
+
+            return Ok(productViewModels);
         }
 
     }
