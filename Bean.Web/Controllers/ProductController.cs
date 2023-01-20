@@ -19,8 +19,8 @@ namespace Bean.Web.Controllers
         public ActionResult GetProduct()
         {
             _logger.LogInformation("Getting all products");
-            _productService.GetHashCode();
-            return Ok("");
+            var products = _productService.GetAllProducts();
+            return Ok(products);
         }
 
     }
