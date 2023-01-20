@@ -1,4 +1,5 @@
 using Bean.Data;
+using Bean.Services.Product;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,7 +35,8 @@ namespace Bean.Web
                 options.EnableDetailedErrors();
                 options.UseSqlServer(Configuration.GetConnectionString("solar.db"));
             });
-                
+
+            services.AddTransient<IProductService, ProductService>();
             
         }
 

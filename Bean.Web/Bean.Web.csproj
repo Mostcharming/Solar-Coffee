@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bean.Data\Bean.Data.csproj" />
+    <ProjectReference Include="..\Bean.Services\Bean.Services.csproj" />
   </ItemGroup>
 
 
