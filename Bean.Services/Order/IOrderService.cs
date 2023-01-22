@@ -9,7 +9,7 @@ namespace Bean.Services.Order
     {
         List<SalesOrder> GetOrders();
         ServiceResponse<bool> GenerateOpenOrder(SalesOrder order);
-        ServiceResponse<bool> MarkFufilled(int id);
+        ServiceResponse<bool> MarkFulfilled(int id);
 
     }
 }

@@ -85,7 +85,7 @@ namespace Bean.Services.Order
 
 
 
-        public ServiceResponse<bool> MarkFufilled(int id)
+        public ServiceResponse<bool> MarkFulfilled(int id)
         {
             var now = DateTime.UtcNow;
             var order = _db.SalesOrders.Find(id);
