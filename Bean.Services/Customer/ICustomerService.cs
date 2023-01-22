@@ -7,7 +7,7 @@ namespace Bean.Services.Customer
     public interface ICustomerService
     {
         List<Data.Models.Customer> GetAllCustomers();
-        Data.Models.Customer GetCustomerById(int id);
+        Data.Models.Customer GetById(int id);
         ServiceResponse<Data.Models.Customer> CreateCustomer(Data.Models.Customer customer);
         ServiceResponse<bool> DeleteCustomer(int id);
     }

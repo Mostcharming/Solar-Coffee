@@ -93,7 +93,7 @@ namespace Bean.Services.Customer
 
         
 
-        public Data.Models.Customer GetCustomerById(int id)
+        public Data.Models.Customer GetById(int id)
         {
             return _db.Customers.Find(id); 
         }

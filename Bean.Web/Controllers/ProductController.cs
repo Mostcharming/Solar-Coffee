@@ -28,6 +28,13 @@ namespace Bean.Web.Controllers
 
             return Ok(productViewModels);
         }
+        [HttpPatch("/api/products/{id}")]
+        public ActionResult ArchiveProduct(int id)
+        {
+            _logger.LogInformation("Archiving product");
+            var archiveResult = _productService.ArchiveProduct(id);
+            return Ok(archiveResult);
+        }
 
     }
 }
