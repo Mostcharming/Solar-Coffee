@@ -95,7 +95,7 @@ namespace Bean.Services.Customer
 
         public Data.Models.Customer GetCustomerById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Customers.Find(id); 
         }
     }
 }

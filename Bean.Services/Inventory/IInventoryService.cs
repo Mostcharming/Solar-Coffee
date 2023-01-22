@@ -9,8 +9,8 @@ namespace Bean.Services.Inventory
     {
         public List<ProductInventory> GetCurrentInventory();
         public ServiceResponse<ProductInventory> UpdateUnitsAvailable(int id, int adjusment);
-        public ProductInventory GetProductById(int productId);
-        public void CreateSnapshot();
+        public ProductInventory GetByProductId(int productId);
+        
         public List<ProductInventorySnapshot> GetSnapshotHistory();
     }
 }

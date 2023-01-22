@@ -18,10 +18,7 @@ namespace Bean.Services.Inventory
             _db = dbContext;
             _logger = logger;
         }
-        public void CreateSnapshot()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<ProductInventory> GetCurrentInventory()
         {
@@ -31,15 +28,39 @@ namespace Bean.Services.Inventory
                 .ToList();
         }
 
-        public ProductInventory GetProductById(int productId)
+        public ProductInventory GetByProductId(int productId)
         {
-            throw new NotImplementedException();
+            return _db.ProductInventories
+                .Include(pi => pi.Product)
+                .FirstOrDefault(pi => pi.Product.Id == productId);
         }
 
         public List<ProductInventorySnapshot> GetSnapshotHistory()
         {
-            throw new NotImplementedException();
+            var earliest = DateTime.UtcNow - TimeSpan.FromHours(6);
+            return _db.ProductInventorySnapshots
+                .Include(snap => snap.Product)
+                .Where(snap => snap.SnapshotTime > earliest && !snap.Product.IsArchived)
+                .ToList();
         }
+
+
+        private void CreateSnapshot(ProductInventory inventory)
+        {
+            var now = DateTime.UtcNow;
+
+            var snapshot = new ProductInventorySnapshot
+            {
+                SnapshotTime = now,
+                Product = inventory.Product,
+                QuantityOnHand = inventory.QuantityOnHand,
+            };
+
+            _db.Add(snapshot);
+
+        }
+
+       
 
         public ServiceResponse<ProductInventory> UpdateUnitsAvailable(int id, int adjusment)
         {
@@ -54,7 +75,7 @@ namespace Bean.Services.Inventory
 
                 try
                 {
-                    CreateSnapshot();
+                    CreateSnapshot(inventory);
                 }
                 catch(Exception e)
                 {
@@ -82,6 +103,8 @@ namespace Bean.Services.Inventory
                     Data = null
                 };
             }
+
+           
         }
     }
 }

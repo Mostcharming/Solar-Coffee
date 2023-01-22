@@ -8,7 +8,7 @@ namespace Bean.Services.Order
     public interface IOrderService
     {
         List<SalesOrder> GetOrders();
-        ServiceResponse<bool> GenerateInvoiveForOrder(SalesOrder order);
+        ServiceResponse<bool> GenerateOpenOrder(SalesOrder order);
         ServiceResponse<bool> MarkFufilled(int id);
 
     }
