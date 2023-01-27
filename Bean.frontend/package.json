@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "vue": "^3.2.45",
+    "vue-property-decorator": "^9.1.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

@@ -1,3 +1,18 @@
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import SolarButton from "@/components/SolarButton.vue";
+
+@Component({
+  name: "SideMenu",
+  components: { SolarButton }
+})
+export default class SideMenu extends Vue {
+  async goToRoute(route: string) {
+    await this.$router.push(route);
+  }
+}
+</script>
+
 <template>
   <div class="side-menu-container">
     <router-link to="/">
@@ -19,20 +34,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import SolarButton from "@/components/SolarButton.vue";
 
-@Component({
-  name: "SideMenu",
-  components: { SolarButton }
-})
-export default class SideMenu extends Vue {
-  async goToRoute(route: string) {
-    await this.$router.push(route);
-  }
-}
-</script>
 
 <style scoped lang="scss">
 @import "@/scss/global.scss";
