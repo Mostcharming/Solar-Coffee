@@ -1,11 +1,27 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+// import store from "./store";
 
-import './assets/main.css'
+import './assets/main.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+// Vue.config.productionTip = false;
+
+// Vue.filter("price", function(number: number) {
+//   if (isNaN(number)) {
+//     return "-";
+//   }
+//   return "€ " + number.toFixed(2);
+// });
+
+// new Vue({
+//   router,
+//   store,
+//   render: (h) => h(App),
+// }).$mount("#app");
+
+app.mount('#app');

@@ -1,5 +1,6 @@
 ﻿using Bean.Services.Product;
 using Bean.Web.Serialization;
+using Bean.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -17,6 +18,20 @@ namespace Bean.Web.Controllers
             _logger = logger;
             _productService = productService;
         }
+
+        [HttpPost("/api/products")]
+        public ActionResult AddProduct([FromBody] ProductModel product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _logger.LogInformation("Adding product");
+            var newProduct = ProductMapper.SerializeProductModel(product);
+            var newProductResponse = _productService.CreateProduct(newProduct);
+            return Ok(newProductResponse);
+        }
+
         [HttpGet("/api/product")]
         public ActionResult GetProduct()
         {

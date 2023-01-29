@@ -1,6 +1,7 @@
 ﻿using Bean.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,13 @@ namespace Bean.Data
         {
 
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+            
+        //    optionsBuilder.UseSqlServer("Host=localhost;Port=5432;Username=postgres;Password=solar123;Database=solardev;");
+
+        //}
 
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
