@@ -45,22 +45,28 @@ namespace Bean.Services.Inventory
         }
 
 
-        private void CreateSnapshot(ProductInventory inventory)
+        private void CreateSnapshot()
         {
             var now = DateTime.UtcNow;
 
-            var snapshot = new ProductInventorySnapshot
+            var inventories = _db.ProductInventories
+                .Include(inv => inv.Product)
+                .ToList();
+
+            foreach (var inventory in inventories)
             {
-                SnapshotTime = now,
-                Product = inventory.Product,
-                QuantityOnHand = inventory.QuantityOnHand,
-            };
+                var snapshot = new ProductInventorySnapshot
+                {
+                    SnapshotTime = now,
+                    Product = inventory.Product,
+                    QuantityOnHand = inventory.QuantityOnHand
+                };
 
-            _db.Add(snapshot);
-
+                _db.Add(snapshot);
+            }
         }
 
-       
+
 
         public ServiceResponse<ProductInventory> UpdateUnitsAvailable(int id, int adjusment)
         {
@@ -75,7 +81,7 @@ namespace Bean.Services.Inventory
 
                 try
                 {
-                    CreateSnapshot(inventory);
+                    CreateSnapshot();
                 }
                 catch(Exception e)
                 {

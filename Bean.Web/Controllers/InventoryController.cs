@@ -59,13 +59,7 @@ namespace Bean.Web.Controllers
         public ActionResult GetSnapshotHistory()
         {
 
-            // ReSharper disable once InvalidXmlDocComment
-            /**
-             * {
-             *     timeline: [1, 2, 3 .. n],
-             *     inventory: [{ id: 1, qty: [43, 21, 32 .. n ] }, { id: 2, qty: [43, 12, 43 .. n]}]
-             * }
-             */
+            
 
             _logger.LogInformation("Getting snapshot history");
 
@@ -73,13 +67,13 @@ namespace Bean.Web.Controllers
             {
                 var snapshotHistory = _inventoryService.GetSnapshotHistory();
 
-                // Get distinct points in time a snapshot was collected
+                
                 var timelineMarkers = snapshotHistory
                     .Select(t => t.SnapshotTime)
                     .Distinct()
                     .ToList();
 
-                // Get quantities grouped by id.
+                
                 var snapshots = snapshotHistory
                     .GroupBy(hist => hist.Product, hist => hist.QuantityOnHand,
                         (key, g) => new ProductInventorySnapshotModel
