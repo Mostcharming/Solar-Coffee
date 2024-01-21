@@ -1,11 +1,7 @@
 <template>
   <div class="btn-link">
-    <button
-      @click="onClick"
-      :disabled="disabled"
-      :class="['solar-button', { 'full-width': isFullWidth }]"
-      type="button"
-    >
+    <button @click="onClick" :disabled="disabled" :class="['solar-button', { 'full-width': isFullWidth }]"
+      type="button">
       <slot></slot>
     </button>
   </div>
@@ -31,6 +27,7 @@ export default class SolarButton extends Vue {
     this.$emit("button:click");
   }
 }
+
 </script>
 
 <style scoped lang="scss">

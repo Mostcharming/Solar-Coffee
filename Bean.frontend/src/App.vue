@@ -2,11 +2,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 import SideMenu from "@/components/SideMenu.vue";
 
+
+
+
+
 @Component({
   name: "App",
   components: { SideMenu }
 })
-export default class App extends Vue {}
+export default class App extends Vue { }
 </script>
 
 <template>
